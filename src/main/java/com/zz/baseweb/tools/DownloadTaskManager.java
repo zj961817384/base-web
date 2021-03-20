@@ -89,8 +89,8 @@ public class DownloadTaskManager {
         DownloadRecordDO downloadRecordDO = taskRecordList.get(key);
         if (downloadRecordDO != null) {
             downloadRecordDO.setStatus(RecordStatusEnum.COMPLETE.name());
-            downloadRecordDO.setGmtModified(new Date());
-            downloadRecordDOMapper.updateByPrimaryKey(downloadRecordDO);
+            downloadRecordDO.setGmtModified(null);
+            downloadRecordDOMapper.updateByPrimaryKeySelective(downloadRecordDO);
         }
         taskRecordList.remove(key);
     }

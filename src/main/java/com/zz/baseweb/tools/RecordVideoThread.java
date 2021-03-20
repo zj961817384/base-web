@@ -61,10 +61,6 @@ public class RecordVideoThread extends Thread {
                 while ((frame != null)) {
                     recorder.record(frame);// 录制
                     frame = grabber.grabFrame();// 获取下一帧
-                    // 不能用flush，用了会关闭流
-//                    if(frameCount++ % 1800 == 0) {
-//                        recorder.flush();
-//                    }
                 }
                 // 停止录制
                 recorder.stop();
