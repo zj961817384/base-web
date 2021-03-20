@@ -7,7 +7,7 @@ CREATE TABLE `video`.`download_record` (
 	`url` varchar(512) COMMENT '直播流路径（下载路径）',
 	`type` int COMMENT '视频类型',
 	`status` varchar(64) COMMENT '视频下载状态',
-	`title` varchar(512) COMMENT '视频名称' CHARACTER SET utf8mb4,
+	`title` varchar(512) COMMENT '视频名称',
 	`width` int,
 	`height` int,
 

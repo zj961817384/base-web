@@ -6,6 +6,7 @@ import com.zz.baseweb.dal.model.DownloadRecordDO;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
@@ -88,6 +89,7 @@ public class DownloadTaskManager {
         DownloadRecordDO downloadRecordDO = taskRecordList.get(key);
         if (downloadRecordDO != null) {
             downloadRecordDO.setStatus(RecordStatusEnum.COMPLETE.name());
+            downloadRecordDO.setGmtModified(new Date());
             downloadRecordDOMapper.updateByPrimaryKey(downloadRecordDO);
         }
         taskRecordList.remove(key);

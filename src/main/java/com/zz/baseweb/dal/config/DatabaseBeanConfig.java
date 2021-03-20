@@ -18,7 +18,7 @@ public class DatabaseBeanConfig {
 
     private String url = "jdbc:mysql://localhost:3306/video?characterEncoding=utf-8&useUnicode=true&useSSL=true";
     private String username = "root";
-    private String password = "tiger";
+    private String password = "Abcd1234";
 
     @Bean
     public DataSource videoDataSource() {

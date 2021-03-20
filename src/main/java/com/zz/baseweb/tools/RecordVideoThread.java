@@ -48,8 +48,8 @@ public class RecordVideoThread extends Thread {
                 }
                 // 流媒体输出地址，分辨率（长，高），是否录制音频（0:不录制/1:录制）
                 recorder = new FFmpegFrameRecorder(filePath,
-                        width == null ? grabber.getImageWidth() : width * 2,
-                        height == null ? grabber.getImageHeight() : height * 2,
+                        width == null ? grabber.getImageWidth() : width,
+                        height == null ? grabber.getImageHeight() : height,
                         1);
                 System.out.printf("rate: %f, width: %d, height:%d", grabber.getFrameRate(), recorder.getImageWidth(), recorder.getImageHeight());
                 recorder.setVideoCodec(AV_CODEC_ID_H264);// 直播流格式
@@ -61,11 +61,13 @@ public class RecordVideoThread extends Thread {
                 while ((frame != null)) {
                     recorder.record(frame);// 录制
                     frame = grabber.grabFrame();// 获取下一帧
+                    // 不能用flush，用了会关闭流
 //                    if(frameCount++ % 1800 == 0) {
 //                        recorder.flush();
 //                    }
                 }
                 // 停止录制
+                recorder.flush();
                 recorder.stop();
                 grabber.stop();
             }
