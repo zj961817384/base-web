@@ -67,7 +67,6 @@ public class RecordVideoThread extends Thread {
 //                    }
                 }
                 // 停止录制
-                recorder.flush();
                 recorder.stop();
                 grabber.stop();
             }
